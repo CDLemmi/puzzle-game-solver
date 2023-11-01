@@ -18,6 +18,46 @@ public class GameState {
     }
 
 
+    public void move(GameMove move) {
+        switch(move.piece) {
+            case WHITE -> {
+                int m = move.getDifferentPosition(w);
+                if(m != -1) throw new IllegalArgumentException("move failed");
+                w = m;
+            }
+            case VERTICAL -> {
+                int m = move.getDifferentPosition(v);
+                if(m != -1) throw new IllegalArgumentException("move failed");
+                v = m;
+            }
+            case HORIZONTAL -> {
+                boolean exists = false;
+                for(int i = 0; i < 4; i++) {
+                    int m = move.getDifferentPosition(h[i]);
+                    if(m != -1) {
+                        h[i] = m;
+                        exists = true;
+                        break;
+                    }
+                }
+                if(!exists) throw new IllegalArgumentException("move failed");
+            }
+            case BLUE -> {
+                boolean exists = false;
+                for(int i = 0; i < 4; i++) {
+                    int m = move.getDifferentPosition(b[i]);
+                    if(m != -1) {
+                        b[i] = m;
+                        exists = true;
+                        break;
+                    }
+                }
+                if(!exists) throw new IllegalArgumentException("move failed");
+            }
+
+        }
+    }
+
 
     public String toString() {
         StringBuilder s = new StringBuilder("GameState(W=");
