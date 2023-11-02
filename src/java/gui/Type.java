@@ -1,0 +1,13 @@
+package src.java.gui;
+
+public enum Type {
+    BLUE,
+    UPPER_VERTICAL,
+    LOWER_VERTICAL,
+    LEFT_HORIZONTAL,
+    RIGHT_HORIZONTAL,
+    UPPER_LEFT_WHITE,
+    LOWER_LEFT_WHITE,
+    UPPER_RIGHT_WHITE,
+    LOWER_RIGHT_WHITE
+}
