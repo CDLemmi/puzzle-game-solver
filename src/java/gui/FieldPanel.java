@@ -1,15 +1,21 @@
 package src.java.gui;
 
-import src.java.data.GameState;
+import src.java.data.*;
+import src.java.control.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FieldPanel extends JPanel {
 
 
 
     public GameState state;
+
+    int totalHeight;
+    int totalWidth;
 
     int xSize;
     int ySize;
@@ -18,6 +24,21 @@ public class FieldPanel extends JPanel {
         Textures.load();
         state = new GameState();
         repaint();
+    }
+
+    public void setupMouseListener(FPClickable f) {
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int x = e.getX();
+                int y = e.getY();
+
+                int pos = x / xSize;
+                pos += (y/ySize)*5;
+
+                f.onClick(pos);
+            }
+        });
     }
 
 
@@ -31,8 +52,8 @@ public class FieldPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        int totalHeight = getHeight();
-        int totalWidth = getWidth();
+        totalHeight = getHeight();
+        totalWidth = getWidth();
 
         xSize = totalWidth / 5;
         ySize = totalHeight / 4;
