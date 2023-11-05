@@ -1,5 +1,6 @@
 package src.java.control;
 
+import src.java.data.GameState;
 import src.java.gui.FieldPanel;
 
 import javax.swing.*;
@@ -28,10 +29,19 @@ public class GUIControl {
         frame.setSize(500, 400);
     }
 
+    GameState getDisplayedState() {
+        return fieldPanel.getDisplayedState();
+    }
 
     public void setupMouseListener(FPClickable f) {
         fieldPanel.setupMouseListener(f);
     }
+
+    void repaint() {
+        fieldPanel.repaint();
+    }
+
+
 
 
 }

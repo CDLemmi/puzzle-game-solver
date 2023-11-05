@@ -12,7 +12,7 @@ public class FieldPanel extends JPanel {
 
 
 
-    public GameState state;
+    GameState state;
 
     int totalHeight;
     int totalWidth;
@@ -24,6 +24,10 @@ public class FieldPanel extends JPanel {
         Textures.load();
         state = new GameState();
         repaint();
+    }
+
+    public GameState getDisplayedState() {
+        return state;
     }
 
     public void setupMouseListener(FPClickable f) {
